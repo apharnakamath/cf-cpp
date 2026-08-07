@@ -1,33 +1,32 @@
 #include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 int main()
 {
     int t;
     cin>>t;
-
+    
     while(t--)
     {
         int n;
         cin>>n;
-        vector <int> res;
-
-        while(n--)
+        vector <int> arr(n);
+        bool poss = true;
+        
+        for(int i=0;i<n;i++)
         {
-            int a;
-            cin>>a;
-            res.push_back(a);
+            cin>>arr[i];
         }
-
-        sort(res.begin(),res.end());
-        int count = 0;
-
-        for(int i=0;i<res.size();i++)
+        
+        sort(arr.begin(),arr.end());
+        
+        for(int i=1;i<n;i++)
         {
-            if(abs(res[i+1]-res[i])>1) count++;
+            if(arr[i]-arr[i-1]>1) poss = false;
         }
-
-        if(count>1) cout<<"NO";
-        else cout<<"YES";
+        
+        if(poss) cout<<"YES"<<endl;
+        else cout<<"NO"<<endl;
     }
 }
